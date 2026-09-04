@@ -1,4 +1,5 @@
 ﻿django-ninja
+gunicorn
 langchain
 langchain-openai
 python-dotenv

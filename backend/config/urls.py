@@ -16,10 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import JsonResponse
 
 from api.routes import api
+
+
+def health(request):
+    """Unauthenticated health check for Render / monitoring uptime checks."""
+    return JsonResponse({'status': 'ok'})
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api.urls),
+    path('health', health),
 ]
