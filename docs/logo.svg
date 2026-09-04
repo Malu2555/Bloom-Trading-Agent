@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Bloom Trading Agent logo">
+  <title>Bloom Trading Agent</title>
+  <defs>
+    <linearGradient id="bloom-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="stem-grad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- subtle background circle -->
+  <circle cx="120" cy="120" r="112" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- chart line (upward growth) rising out of the bloom -->
+  <polyline points="52,168 96,128 124,142 190,76"
+            fill="none" stroke="url(#stem-grad)" stroke-width="7"
+            stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="166,76 190,76 190,100"
+            fill="none" stroke="#22c55e" stroke-width="7"
+            stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- bloom petals -->
+  <g fill="url(#bloom-grad)">
+    <ellipse cx="120" cy="76" rx="24" ry="40" transform="rotate(0 120 120)"/>
+    <ellipse cx="120" cy="76" rx="24" ry="40" transform="rotate(60 120 120)"/>
+    <ellipse cx="120" cy="76" rx="24" ry="40" transform="rotate(120 120 120)"/>
+    <ellipse cx="120" cy="76" rx="24" ry="40" transform="rotate(180 120 120)"/>
+    <ellipse cx="120" cy="76" rx="24" ry="40" transform="rotate(240 120 120)"/>
+    <ellipse cx="120" cy="76" rx="24" ry="40" transform="rotate(300 120 120)"/>
+  </g>
+
+  <!-- flower center -->
+  <circle cx="120" cy="120" r="26" fill="#0f172a"/>
+  <circle cx="120" cy="120" r="14" fill="#fbfffe"/>
+</svg>

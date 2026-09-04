@@ -1,0 +1,222 @@
+/* ============================================================================
+   utilities.css — ATOMIC UTILITY CLASSES
+   ----------------------------------------------------------------------------
+   MIRRORS:  @tailwind components + @tailwind utilities
+   PURPOSE:  Pre-authored single-purpose classes you compose in markup, e.g.
+
+                <div class="flex items-center gap-4 p-4 text-sm">
+
+   HOW IT DIFFERS FROM TAILWIND:
+     - Tailwind's JIT compiler only ships classes you actually use.
+     - Here EVERY class is static. Adding a new class means adding it to this
+       file first (one line), then using it. No rebuild step is required.
+
+   IMPORTANT CONVENTIONS:
+     - ALPHABETIZE within each category so it is easy to find classes quickly.
+     - Everything resolves through the tokens in ./main.css (design stays
+       centralized). Never hardcode raw px / hex values here.
+     - Responsive variants are real classes wrapped in @media queries, named
+       with a breakpoint prefix:  md-foo, lg-foo  (mirrors Tailwind's md:).
+     - Use channel-only colors with rgb(var(--color-*)) so alpha works.
+
+   USAGE: imported once from ../main.js (AFTER main.css).
+   ========================================================================== */
+
+
+/* ============================================================================
+   LAYOUT — display & positioning primitives
+   ========================================================================== */
+.block      { display: block; }
+.inline     { display: inline; }
+.hidden     { display: none; }
+
+.flex       { display: flex; }
+.flex-row   { flex-direction: row; }
+.flex-col   { flex-direction: column; }
+.flex-wrap  { flex-wrap: wrap; }
+.flex-1     { flex: 1 1 0%; }
+.flex-grow  { flex-grow: 1; }
+.items-center  { align-items: center; }
+.items-start   { align-items: flex-start; }
+.items-end     { align-items: flex-end; }
+.items-baseline{ align-items: baseline; }
+.justify-center   { justify-content: center; }
+.justify-between  { justify-content: space-between; }
+.justify-around   { justify-content: space-around; }
+.justify-end      { justify-content: flex-end; }
+
+.grid         { display: grid; }
+.grid-cols-1  { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3  { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4  { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.place-items-center { place-items: center; }
+
+/* gap — colocated with space tokens */
+.gap-0 { gap: var(--space-0); }
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.sticky   { position: sticky; }
+.top-0    { top: 0; }
+.right-0  { right: 0; }
+.z-10 { z-index: 10; }
+.z-50 { z-index: 50; }
+
+
+/* ============================================================================
+   SPACING — padding & margin (all resolve to --space-* tokens)
+   ========================================================================== */
+.p-0  { padding: var(--space-0); }
+.p-1  { padding: var(--space-1); }
+.p-2  { padding: var(--space-2); }
+.p-3  { padding: var(--space-3); }
+.p-4  { padding: var(--space-4); }
+.p-6  { padding: var(--space-6); }
+.p-8  { padding: var(--space-8); }
+.px-2 { padding-inline: var(--space-2); }
+.px-4 { padding-inline: var(--space-4); }
+.px-6 { padding-inline: var(--space-6); }
+.py-2 { padding-block: var(--space-2); }
+.py-4 { padding-block: var(--space-4); }
+.py-6 { padding-block: var(--space-6); }
+.pt-4 { padding-top: var(--space-4); }
+.pb-4 { padding-bottom: var(--space-4); }
+
+.m-0  { margin: var(--space-0); }
+.m-2  { margin: var(--space-2); }
+.m-4  { margin: var(--space-4); }
+.mx-auto { margin-inline: auto; }
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.ml-auto { margin-left: auto; }
+
+/* __UTIL_P2__ */
+
+/* ============================================================================
+   SIZING
+   ========================================================================== */
+.w-full     { width: 100%; }
+.w-auto     { width: auto; }
+.w-fit      { width: fit-content; }
+.h-full     { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+.max-w-xl  { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-4xl { max-width: 56rem; }
+
+
+/* ============================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+.font-mono   { font-family: var(--font-mono); }
+.font-sans   { font-family: var(--font-sans); }
+.font-light  { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold   { font-weight: 700; }
+
+.text-xs   { font-size: var(--text-xs); }
+.text-sm   { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg   { font-size: var(--text-lg); }
+.text-xl   { font-size: var(--text-xl); }
+.text-2xl  { font-size: var(--text-2xl); }
+.text-3xl  { font-size: var(--text-3xl); }
+
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.no-wrap     { white-space: nowrap; }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ============================================================================
+   COLOR & SURFACE (semantic — trading-focused)
+   ========================================================================== */
+.text-fg      { color: rgb(var(--color-fg)); }
+.text-muted   { color: rgb(var(--color-muted)); }
+.text-primary { color: rgb(var(--color-primary)); }   /* up / profit / buy  */
+.text-danger  { color: rgb(var(--color-danger)); }    /* down / loss / sell */
+.text-warning { color: rgb(var(--color-warning)); }
+.text-info    { color: rgb(var(--color-info)); }
+
+.bg-bg       { background: rgb(var(--color-bg)); }
+.bg-abg      { background: rgb(var(--color-abg)); }
+.bg-surface  { background: rgb(var(--color-surface)); }
+.bg-primary  { background: rgb(var(--color-primary)); }
+.bg-danger   { background: rgb(var(--color-danger)); }
+.bg-warning  { background: rgb(var(--color-warning)); }
+.bg-info     { background: rgb(var(--color-info)); }
+.bg-transparent { background: transparent; }
+
+/* helper classes for profit/loss coloring in tables */
+.positive { color: rgb(var(--color-primary)); }
+.negative { color: rgb(var(--color-danger)); }
+.flat     { color: rgb(var(--color-muted)); }
+
+
+/* ============================================================================
+   BORDERS, RADIUS, SHADOWS
+   ========================================================================== */
+.border        { border: 1px solid rgb(var(--color-border)); }
+.border-t      { border-top: 1px solid rgb(var(--color-border)); }
+.border-b      { border-bottom: 1px solid rgb(var(--color-border)); }
+.rounded-sm  { border-radius: var(--radius-sm); }
+.rounded-md  { border-radius: var(--radius-md); }
+.rounded-lg  { border-radius: var(--radius-lg); }
+.rounded-xl  { border-radius: var(--radius-xl); }
+.rounded-full { border-radius: 9999px; }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+
+/* ============================================================================
+   MISC
+   ========================================================================== */
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.cursor-pointer { cursor: pointer; }
+.cursor-default { cursor: default; }
+.opacity-0 { opacity: 0; }
+.opacity-50 { opacity: 0.5; }
+.opacity-100 { opacity: 1; }
+.select-none { user-select: none; }
+.transition { transition: opacity 0.15s ease, background-color 0.15s ease; }
+
+
+/* ============================================================================
+   RESPONSIVE VARIANTS — real classes inside media queries
+   (Named with breakpoint prefix, e.g. Tailwind's `md:` -> `md-`)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .md-flex-row    { flex-direction: row; }
+  .md-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md-grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .md-p-6  { padding: var(--space-6); }
+  .md-text-lg { font-size: var(--text-lg); }
+}
+@media (min-width: 1024px) {
+  .lg-grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lg-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+

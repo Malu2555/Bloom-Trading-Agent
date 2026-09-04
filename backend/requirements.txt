@@ -1,0 +1,21 @@
+﻿django-ninja
+langchain
+langchain-openai
+python-dotenv
+alpaca-mcp-server
+alpaca-py
+
+# --- Databases / vector store ---------------------------------------------
+# PostgreSQL + pgvector for the Neon production database (EmbeddedRiskContext).
+pgvector
+psycopg[binary]
+dj-database-url
+
+# Local semantic-knowledge container used when DATABASE_URL is absent (dev/test).
+chromadb
+
+# Local offline embedder (sentence-transformers) for the dev/offline path.
+# In dev we force local embeddings with EMBEDDING_FORCE_LOCAL; in production the
+# remote Fireworks embedder is used instead, so this stays a lightweight fallback.
+sentence-transformers
+
