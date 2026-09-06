@@ -41,6 +41,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'agent',
     'user',
     'django.contrib.admin',
@@ -66,7 +67,18 @@ CSRF_TRUSTED_ORIGINS = [
     if o.strip()
 ]
 
+# --- CORS configuration --------------------------------------------------
+# Allow the frontend to make cross-origin requests to this backend.
+# Default allows localhost:3000 for development; extend via CORS_ALLOWED_ORIGINS env var.
+CORS_ALLOWED_ORIGINS = [
+    o.strip()
+    for o in os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+    if o.strip()
+]
+CORS_ALLOW_CREDENTIALS = True
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
