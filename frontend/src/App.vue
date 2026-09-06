@@ -10,6 +10,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Sidebar from '@/components/SidebarCard.vue'
 import { SpeedInsights } from '@vercel/speed-insights/vue'
 import { api } from '@/api'
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 
 const authenticated = ref(false)
 

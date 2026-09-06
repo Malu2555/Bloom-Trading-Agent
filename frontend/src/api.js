@@ -41,7 +41,7 @@ function getCsrfToken() {
  * @param {object} [opts] - fetch options (method, body, ...)
  */
 async function request(path, opts = {}) {
-  const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) }
+  const headers = { 'Content-Type': 'application/json', ...opts.headers }
   const method = (opts.method || 'GET').toUpperCase()
   if (method !== 'GET' && method !== 'HEAD' && !headers['X-CSRFToken']) {
     const token = getCsrfToken()
