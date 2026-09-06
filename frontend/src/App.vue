@@ -9,6 +9,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import Sidebar from '@/components/SidebarCard.vue'
 import { api } from '@/api'
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 
 const authenticated = ref(false)
 
@@ -44,5 +45,6 @@ onUnmounted(() => window.removeEventListener('app:refresh', handleRefresh))
            dashboard's fetch() calls don't race ahead of /auth/bootstrap. -->
       <RouterView v-if="authenticated" />
     </main>
+    <SpeedInsights />
   </div>
 </template>
