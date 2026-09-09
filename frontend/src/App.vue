@@ -10,7 +10,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Sidebar from '@/components/SidebarCard.vue'
 import { SpeedInsights } from '@vercel/speed-insights/vue'
 import { api } from '@/api'
-import { SpeedInsights } from '@vercel/speed-insights/vue'
 
 const authenticated = ref(false)
 
@@ -21,11 +20,11 @@ const authenticated = ref(false)
 onMounted(async () => {
   try {
     await api.silentAuth()
+    const status = await api.whoami()
+    authenticated.value = status.authenticated
   } catch (e) {
     console.warn('Silent auth failed:', e?.message || e)
-  } finally {
-    // Render the views regardless; stores surface their own per-request errors.
-    authenticated.value = true
+    authenticated.value = false
   }
 })
 
