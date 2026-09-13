@@ -268,9 +268,9 @@ class AgentConfig:
 
 def _vector_dimensions() -> int:
     try:
-        return int(os.environ.get("EMBEDDING_DIMENSIONS", "1536"))
+        return int(os.environ.get("EMBEDDING_DIMENSIONS", "4096"))
     except (TypeError, ValueError):
-        return 1536
+        return 4096
 
 
 VECTOR_DIMENSIONS = _vector_dimensions()

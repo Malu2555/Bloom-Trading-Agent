@@ -62,6 +62,9 @@ SESSION_COOKIE_HTTPONLY = True
 # HTTPS, which is enforced by SESSION_COOKIE_SECURE below.
 SESSION_COOKIE_SAMESITE = os.environ.get('SESSION_COOKIE_SAMESITE', 'Lax')
 SESSION_COOKIE_SECURE = not DEBUG
+# CSRF cookie needs the same Secure treatment when SameSite=None, otherwise the
+# browser rejects it (SameSite=None requires Secure).
+CSRF_COOKIE_SECURE = not DEBUG
 # CSRF cookie must be readable by the frontend SPA (it sends `X-CSRFToken`) while
 # the session cookie above stays HttpOnly. This is the standard Django SPA split.
 CSRF_COOKIE_HTTPONLY = False

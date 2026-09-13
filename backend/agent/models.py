@@ -22,7 +22,7 @@ from django.utils import timezone
 # ``vector(n)`` on PostgreSQL + pgvector (production/Neon); it degrades to a
 # plain BLOB on SQLite so local ``migrate``/``check`` still pass (local semantic
 # search is delegated to Chroma in ``agent.brain``).
-VECTOR_DIMENSIONS = int(os.environ.get("EMBEDDING_DIMENSIONS", "1536"))
+VECTOR_DIMENSIONS = int(os.environ.get("EMBEDDING_DIMENSIONS", "4096"))
 
 try:
     from pgvector.django import VectorField
