@@ -56,11 +56,17 @@ INSTALLED_APPS = [
 # The browser's Auth is a lightweight HttpOnly session cookie - no heavy login
 # machinery. Keep it HttpOnly + SameSite and force over HTTPS outside DEBUG.
 SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SAMESITE = 'Lax'
+# Default 'Lax' (safe). Set SESSION_COOKIE_SAMESITE=None in production when the
+# Vue SPA (Vercel) and the Django API (Render) are on different origins, so the
+# HttpOnly session cookie is sent on cross-site fetch requests. 'None' requires
+# HTTPS, which is enforced by SESSION_COOKIE_SECURE below.
+SESSION_COOKIE_SAMESITE = os.environ.get('SESSION_COOKIE_SAMESITE', 'Lax')
 SESSION_COOKIE_SECURE = not DEBUG
 # CSRF cookie must be readable by the frontend SPA (it sends `X-CSRFToken`) while
 # the session cookie above stays HttpOnly. This is the standard Django SPA split.
 CSRF_COOKIE_HTTPONLY = False
+# Match the session cookie when the SPA and API are cross-origin.
+CSRF_COOKIE_SAMESITE = os.environ.get('CSRF_COOKIE_SAMESITE', 'Lax')
 CSRF_TRUSTED_ORIGINS = [
     o.strip()
     for o in os.environ.get('TRUSTED_ORIGINS', '').split(',')
